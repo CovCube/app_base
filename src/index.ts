@@ -21,6 +21,7 @@ import { createTokensTable } from "./model/token";
 import { setupPassport } from "./utils/passport_utils";
 import { createCubeTables } from "./model/cube";
 import { createSensorDataTable } from "./model/sensor_data";
+import { setupMQTT } from "./utils/mqtt_utils";
 
 // Parse environment variables
 dotenv.config();
@@ -97,6 +98,8 @@ async function setupServer(): Promise<void> {
         // Setup passport
         await createTokensTable();
         setupPassport();
+        // Setup mqtt
+        await setupMQTT();
     } catch(err) {
         console.log(err);
     }
