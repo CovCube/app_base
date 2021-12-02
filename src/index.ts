@@ -19,6 +19,8 @@ import passport from "passport";
 // Internal imports
 import { createTokensTable } from "./model/token";
 import { setupPassport } from "./utils/passport_utils";
+import { createCubeTables } from "./model/cube";
+import { createSensorDataTable } from "./model/sensor_data";
 
 // Parse environment variables
 dotenv.config();
@@ -89,6 +91,9 @@ async function setupServer(): Promise<void> {
     }
     
     try {
+        // Setup cube database
+        await createCubeTables();
+        await createSensorDataTable();
         // Setup passport
         await createTokensTable();
         setupPassport();
