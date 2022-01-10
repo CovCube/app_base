@@ -119,7 +119,7 @@ export function getSensorData(cubeId?: string, start?: string, end?: string): Pr
     });
 }
 
-export function persistSensorData(cubeId: string, data: string): Promise<void> {
+export function persistSensorData(data: string): Promise<void> {
     return new Promise(async (resolve, reject) => {
         // Check input
         try {
