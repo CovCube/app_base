@@ -95,7 +95,7 @@ export function getSensorData(cubeId?: string, start?: string, end?: string): Pr
         
         let res_rows;
         try {
-            res_rows = await (await pool.query(getDataQuery+selectors)).rows;
+            res_rows = (await pool.query(getDataQuery+selectors)).rows;
         } catch(err) {
             return reject(err);
         }
