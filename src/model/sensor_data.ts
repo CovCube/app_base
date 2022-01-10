@@ -123,7 +123,6 @@ export function persistSensorData(cubeId: string, data: string): Promise<void> {
     return new Promise(async (resolve, reject) => {
         // Check input
         try {
-            checkCubeId(cubeId);
             if (data === undefined || !data.trim()) {
                 throw new Error("data is undefined or empty");
             }
@@ -133,7 +132,7 @@ export function persistSensorData(cubeId: string, data: string): Promise<void> {
         
         try {
             let timestamp: Date = new Date();
-
+            //TODO: Add properties of data, that should be persistet
             await pool.query(persistDataQuery, [cubeId, timestamp, data]);
 
             return resolve();
